@@ -15,7 +15,7 @@ let database = null;
 
 const initializeDBAndServer = async () => {
   try {
-    db = await open({
+    database = await open({
       filename: databasePath,
       driver: sqlite3.Database,
     });
