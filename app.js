@@ -145,7 +145,7 @@ app.post("/districts/", authenticateToken, async (request, response) => {
     INSERT INTO 
       district (state_id, district_name, cases, cured, active, deaths)
       VALUES 
-      (${stateId}, '${districtName}', ${cases}, ${cured}, ${deaths}) ;`;
+      (${stateId}, '${districtName}', ${cases}, ${cured},${active},${deaths}) ;`;
   await database.run(postDistrictQuery);
   response.send("District Successfully Added");
 });
@@ -209,11 +209,11 @@ app.put(
       district 
       SET 
       district_name = '${districtName}'
-      state_id = '${stateId}',
-      cases = '${cases}',
-      cured = '${cured}',
-      active = '${active}',
-      deaths = '${deaths}'
+      state_id = ${stateId},
+      cases = ${cases},
+      cured = ${cured},
+      active = ${active},
+      deaths = ${deaths}
       WHERE 
       district_id = ${districtId};`;
 
